@@ -41,8 +41,16 @@ class PdfReport:
         pdf.cell(w=0, h=80, txt="Flatmates Bill", border=1, align="C", ln=1)
 
         #Insert Period Label and value
-        pdf.cell(w=100, h=40, txt="Period:", border=1, align="L")
-        pdf.cell(w=130, h=40, txt=bill.period, border=1)
+        pdf.cell(w=100, h=40, txt="Period:", border=1, align="L",)
+        pdf.cell(w=130, h=40, txt=bill.period, border=1, ln=1)
+
+        #Insert Name and due amount of the first flatmate (str method to be used to change the float into str)
+        pdf.cell(w=100, h=40, txt=flatmate1.name + ":", border=1, align="L",)
+        pdf.cell(w=130, h=40, txt=str(flatmate1.pays(bill,flatmate2)), border=1, ln=1)
+
+        #Insert Name and due amount of the second flatmate (str method to be used to change the float into str)
+        pdf.cell(w=100, h=40, txt=flatmate2.name + ":", border=1, align="L")
+        pdf.cell(w=130, h=40, txt=str(flatmate2.pays(bill,flatmate1)), border=1, ln=1)
 
         pdf.output(self.filename)
 
