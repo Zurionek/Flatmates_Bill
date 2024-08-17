@@ -52,6 +52,9 @@ class PdfReport:
         pdf = FPDF(orientation="P", unit="pt")
         pdf.add_page()
 
+        #Add icon
+        pdf.image("house.png", w=30, h=30)
+
         # Flatmate1 & Flatmate2 pays
         flatmate1_pays = str(flatmate1.pays(bill, flatmate2))
         flatmate2_pays = str(flatmate2.pays(bill, flatmate1))
