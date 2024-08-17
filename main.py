@@ -52,7 +52,7 @@ class PdfReport:
         pdf = FPDF(orientation="P", unit="pt")
         pdf.add_page()
 
-        #Add icon
+        # Add icon
         pdf.image("house.png", w=30, h=30)
 
         # Flatmate1 & Flatmate2 pays
@@ -60,20 +60,26 @@ class PdfReport:
         flatmate2_pays = str(flatmate2.pays(bill, flatmate1))
 
         # Adding title
-        pdf.set_font(family="Times", size=20, style="B")
-        pdf.cell(w=0, h=80, txt="Flatmates Bill", border=1, align="C", ln=1)
+        pdf.set_font(family="Times", size=24, style="B")
+        pdf.cell(w=0, h=80, txt="Flatmates Bill", align="C", ln=1)
 
         # Insert Period Label and value
-        pdf.cell(w=100, h=40, txt="Period:", border=1, align="L", )
-        pdf.cell(w=130, h=40, txt=bill.period, border=1, ln=1)
+        pdf.set_font(family="Times", size=16, style="B")
+        pdf.cell(w=100, h=40, txt="Period:", align="L", )
+        pdf.set_font(family="Times", size=16)
+        pdf.cell(w=80, h=40, txt=bill.period, ln=1)
 
         # Insert Name and due amount of the first flatmate (str method to be used to change the float into str)
-        pdf.cell(w=100, h=40, txt=flatmate1.name + ":", border=1, align="L", )
-        pdf.cell(w=130, h=40, txt=flatmate1_pays, border=1, ln=1)
+        pdf.set_font(family="Times", size=16, style="B")
+        pdf.cell(w=100, h=40, txt=flatmate1.name + ":", align="L", )
+        pdf.set_font(family="Times", size=16)
+        pdf.cell(w=80, h=40, txt=flatmate1_pays, ln=1)
 
         # Insert Name and due amount of the second flatmate (str method to be used to change the float into str)
-        pdf.cell(w=100, h=40, txt=flatmate2.name + ":", border=1, align="L")
-        pdf.cell(w=130, h=40, txt=flatmate2_pays, border=1, ln=1)
+        pdf.set_font(family="Times", size=16, style="B")
+        pdf.cell(w=100, h=40, txt=flatmate2.name + ":", align="L")
+        pdf.set_font(family="Times", size=16)
+        pdf.cell(w=80, h=40, txt=flatmate2_pays, ln=1)
 
         pdf.output(self.filename)
 
