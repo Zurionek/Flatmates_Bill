@@ -1,3 +1,5 @@
+import webbrowser
+
 from fpdf import FPDF
 
 
@@ -82,6 +84,9 @@ class PdfReport:
         pdf.cell(w=80, h=40, txt=flatmate2_pays, ln=1)
 
         pdf.output(self.filename)
+
+        # Automatically open PDF report in the default browser
+        webbrowser.open(self.filename)
 
 
 the_bill = Bill(120, "August_2024")
