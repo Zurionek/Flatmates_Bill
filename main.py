@@ -23,6 +23,11 @@ class Flatmate:
         self.name = name
 
     def pays(self, bill, flatmate2):
+        """
+        :param bill:
+        :param flatmate2:
+        :return:
+        """
         weight = self.days_in_house / (self.days_in_house + flatmate2.days_in_house)
         to_pay = round((bill.amount * weight), 2)
         return to_pay
@@ -39,7 +44,12 @@ class PdfReport:
         self.filename = filename
 
     def generate(self, flatmate1, flatmate2, bill):
-        pdf = FPDF(orientation="P", unit="pt", format="A4")
+        """
+        :param flatmate1:
+        :param flatmate2:
+        :param bill:
+        """
+        pdf = FPDF(orientation="P", unit="pt")
         pdf.add_page()
 
         # Flatmate1 & Flatmate2 pays
