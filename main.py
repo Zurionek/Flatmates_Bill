@@ -88,15 +88,21 @@ class PdfReport:
         # Automatically open PDF report in the default browser
         webbrowser.open(self.filename)
 
+user_name = input("Hello, what is your name? ")
+user_bill = float(input("{}, please enter the bill amount: ".format(user_name)))
+bill_period = input("For what period the bill is issued? - Please provide month and year: ")
+user_days_in_house = int(input("How many days you spent in the house during the period: {} :".format(bill_period)))
+flatmate_name = input("What is the name of your flatmate? ")
+flatmate_days_in_house = int(input("How many days {} spent in the house during the period: {} :".
+                                   format(flatmate_name, bill_period)))
 
-user_bill = float(input("Hey user, enter the bill amount: "))
 
-the_bill = Bill(user_bill, "August_2024")
-john = Flatmate("John", 20)
-marry = Flatmate("Marry", 25)
+the_bill = Bill(user_bill, bill_period)
+user_1 = Flatmate(user_name, user_days_in_house)
+user_flatmate = Flatmate(flatmate_name, flatmate_days_in_house)
 
-print("John pays: ", john.pays(the_bill, marry))
-print("Marry pays: ", marry.pays(the_bill, john))
+print("{} pays: ".format(user_name), user_1.pays(the_bill, user_flatmate))
+print("{} pays: ".format(flatmate_name), user_flatmate.pays(the_bill, user_1))
 
 pdf_report = PdfReport(filename="Report_1.pdf")
-pdf_report.generate(flatmate1=john, flatmate2=marry, bill=the_bill)
+pdf_report.generate(flatmate1=user_1, flatmate2=user_flatmate, bill=the_bill)
