@@ -60,6 +60,7 @@ class PdfReport:
         # Flatmate1 & Flatmate2 pays
         flatmate1_pays = str(flatmate1.pays(bill, flatmate2))
         flatmate2_pays = str(flatmate2.pays(bill, flatmate1))
+        bill_total = str(bill.amount)
 
         # Adding title
         pdf.set_font(family="Times", size=24, style="B")
@@ -70,6 +71,12 @@ class PdfReport:
         pdf.cell(w=100, h=40, txt="Period:", align="L", )
         pdf.set_font(family="Times", size=16)
         pdf.cell(w=80, h=40, txt=bill.period, ln=1)
+
+        #Insert bill total value
+        pdf.set_font(family="Times", size=16, style="B")
+        pdf.cell(w=100, h=40, txt="Total:", align="L", )
+        pdf.set_font(family="Times", size=16)
+        pdf.cell(w=80, h=40, txt=bill_total, ln=1)
 
         # Insert Name and due amount of the first flatmate (str method to be used to change the float into str)
         pdf.set_font(family="Times", size=16, style="B")
