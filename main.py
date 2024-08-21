@@ -17,5 +17,5 @@ user_flatmate = Flatmate(flatmate_name, flatmate_days_in_house)
 print("{} pays: ".format(user_name), user_1.pays(the_bill, user_flatmate))
 print("{} pays: ".format(flatmate_name), user_flatmate.pays(the_bill, user_1))
 
-pdf_report = PdfReport(filename="Report_1.pdf")
+pdf_report = PdfReport(filename=f"{the_bill.period}.pdf")
 pdf_report.generate(flatmate1=user_1, flatmate2=user_flatmate, bill=the_bill)

@@ -1,4 +1,5 @@
 import webbrowser
+import os
 
 from fpdf import FPDF
 
@@ -22,7 +23,7 @@ class PdfReport:
         pdf.add_page()
 
         # Add icon
-        pdf.image("house.png", w=30, h=30)
+        pdf.image("files/house.png", w=30, h=30)
 
         # Flatmate1 & Flatmate2 pays
         flatmate1_pays = str(flatmate1.pays(bill, flatmate2))
@@ -57,7 +58,9 @@ class PdfReport:
         pdf.set_font(family="Times", size=16)
         pdf.cell(w=80, h=40, txt=flatmate2_pays, ln=1)
 
-        pdf.output(self.filename)
 
         # Automatically open PDF report in the default browser
+        os.chdir("files") #Change directory to files to open report directly from there
+        pdf.output(self.filename)
+
         webbrowser.open(self.filename)
