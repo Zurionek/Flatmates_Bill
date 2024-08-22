@@ -1,6 +1,7 @@
 import webbrowser
 import os
 
+from filestack import Client
 from fpdf import FPDF
 
 class PdfReport:
@@ -64,3 +65,14 @@ class PdfReport:
         pdf.output(self.filename)
 
         webbrowser.open(self.filename)
+
+# class FileSharer:
+#
+#     def __init__(self, filepath, api_key="copy API key here"):
+#         self.filepath = filepath
+#         self.api_key = api_key
+#
+#     def share(self):
+#         client = Client(self.api_key)
+#         new_filelink = client.upload(filepath=self.filepath)
+#         return new_filelink.url
