@@ -1,5 +1,5 @@
 from flat import Bill, Flatmate
-from report import PdfReport , #FileSharer
+from report import PdfReport #,FileSharer
 
 user_name = input("Hello, what is your name? ")
 user_bill = float(input("{}, please enter the bill amount: ".format(user_name)))
