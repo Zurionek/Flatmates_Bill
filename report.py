@@ -1,8 +1,14 @@
+"""
+File contains class PdfReport that is responsible for generating pdf file
+with a final result summary
+"""
+
 import webbrowser
 import os
 
-from filestack import Client
+# from filestack import Client
 from fpdf import FPDF
+
 
 class PdfReport:
     """
@@ -41,7 +47,7 @@ class PdfReport:
         pdf.set_font(family="Times", size=16)
         pdf.cell(w=80, h=40, txt=bill.period, ln=1)
 
-        #Insert bill total value
+        # Insert bill total value
         pdf.set_font(family="Times", size=16, style="B")
         pdf.cell(w=100, h=40, txt="Total:", align="L", )
         pdf.set_font(family="Times", size=16)
@@ -59,9 +65,8 @@ class PdfReport:
         pdf.set_font(family="Times", size=16)
         pdf.cell(w=80, h=40, txt=flatmate2_pays, ln=1)
 
-
         # Automatically open PDF report in the default browser
-        os.chdir("files") #Change directory to files to open report directly from there
+        os.chdir("files")  # Change directory to files to open report directly from there
         pdf.output(self.filename)
 
         webbrowser.open(self.filename)
